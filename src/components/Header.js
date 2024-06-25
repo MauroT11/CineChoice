@@ -1,6 +1,21 @@
+import {
+    ClerkProvider,
+    SignedIn,
+    SignedOut,
+    SignInButton,
+    UserButton,
+  } from "@clerk/nextjs";
+  import Link from "next/link";
 
+export default function Header({ username, userId }) {
 
-export default function Header() {
+    const UserButtonApp = {
+        elements: {
+        userButtonAvatarBox: "w-10 h-10", // Custom width and height
+        userButtonPopoverCard: "bg-blue-100", // Custom background for the popover card
+        userButtonPopoverActionButton: "text-accent", // Custom text color for action buttons
+        },
+    }
 
     return (
         <div className="navbar bg-primary m-2 rounded-2xl max-w-[99%]">
@@ -30,26 +45,34 @@ export default function Header() {
                             </ul>
                         </details>
                     </li>
+                    {userId ? (
+                        <li>
+                            <a href="/watchList/movies" className="bg-accent hover:bg-secondary font-bold">Watch List</a>
+                        </li>
+                    ) : (
+                        null
+                    )}
+                    <li>
+
+                    </li>
                 </ul>
             </div>
             <div className="navbar-end">
-                <div className="dropdown dropdown-end">
-                    <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-                        <div className="w-10 rounded-full">
-                        <img alt="Tailwind CSS Navbar component" src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
-                        </div>
+                {userId ? (
+                    <div className="px-8">
+                        <UserButton
+                        userProfileMode="navigation"
+                        userProfileUrl={"/userProfile"}
+                        afterSignOutUrl="/"
+                        appearance={UserButtonApp}
+                        />
                     </div>
-                    <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-                        <li>
-                        <a className="justify-between">
-                            Profile
-                            <span className="badge">New</span>
-                        </a>
-                        </li>
-                        <li><a>Settings</a></li>
-                        <li><a>Logout</a></li>
-                    </ul>
-                </div>
+                    
+                ) : (
+                    <div className="px-8">
+                        <Link href={`/signIn`} state={userId} className="text-accent text-3xl">Sign In</Link>
+                    </div>
+                    )}
             </div>
         </div>
     )
