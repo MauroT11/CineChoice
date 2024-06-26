@@ -15,14 +15,13 @@ export const metadata = {
 export default async function RootLayout({ children }) {
 
   const user = await currentUser();
-  const username = user?.username;
   const userId = user?.id;
 
   return (
     <ClerkProvider>
       <html lang="en">
         <body className={prompt.className}>
-          <Header username={username} userId={userId} />
+          <Header userId={userId} />
           {children}
           <Footer />
         </body>

@@ -7,7 +7,7 @@ import {
   } from "@clerk/nextjs";
   import Link from "next/link";
 
-export default function Header({ username, userId }) {
+export default function Header({ userId }) {
 
     const UserButtonApp = {
         elements: {
@@ -47,7 +47,7 @@ export default function Header({ username, userId }) {
                     </li>
                     {userId ? (
                         <li>
-                            <a href="/watchList/movies" className="bg-accent hover:bg-secondary font-bold">Watch List</a>
+                            <a href="/watchList" className="bg-accent hover:bg-secondary font-bold">Watch List</a>
                         </li>
                     ) : (
                         null

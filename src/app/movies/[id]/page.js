@@ -5,14 +5,15 @@ import { IoCalendarNumber } from "react-icons/io5";
 import { IoTime } from "react-icons/io5";
 import { TbRating18Plus } from "react-icons/tb";
 import { Suspense } from "react";
+import { sql } from "@vercel/postgres"
+import { currentUser } from "@clerk/nextjs/server";
 
 export default async function Page({params}) {
 
-    // console.log(params.id)
-
     const APIkey = process.env.NEXT_PRIVATE_ACCESS_TOKEN;
-
     const movieID = params.id
+    const user = await currentUser();
+    const userID = user.id
 
     const options = {
         method: 'GET',
@@ -24,7 +25,12 @@ export default async function Page({params}) {
 
     const response = await fetch(`https://api.themoviedb.org/3/movie/${movieID}?language=en-US`, options)
     const movie = await response.json()
-    // console.log(movie)
+
+    async function handleWatchList() {
+        "use server"
+
+        await sql`INSERT INTO moviewatchlist (userid, movieid) values (${userID}, ${movieID})`
+    }
 
     return (
         <div className="flex flex-col items-center min-h-full">
@@ -36,7 +42,9 @@ export default async function Page({params}) {
                     <div className="grid grid-cols-2 mx-52">
                         <div className="flex flex-col gap-4 items-center">
                             <img src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} className="max-h-[600px] rounded-2xl" alt="movie poster" />
-                            <a className="btn btn-accent hover:btn-secondary text-2xl">Add to Watch List</a>
+                            <form action={handleWatchList}>
+                                <button className="btn btn-accent hover:btn-secondary text-2xl">Add to Watch List</button>
+                            </form>
                         </div>
                         <div className="flex flex-col gap-4 max-w-[1000px]">
                             <div className="flex justify-center text-2xl gap-8 my-1">
