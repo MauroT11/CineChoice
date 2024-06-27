@@ -25,6 +25,7 @@ export default async function Page() {
 
     return (
         <div className="flex flex-col items-center min-h-full">
+          <h1 className="text-5xl font-bold my-4">Top Rated TV Series</h1>
             <TvTopRatedCards Series={Series.results} Genres={Genres} />
             <div className="join my-4">
               <button className="join-item btn-accent btn btn-lg btn-active">1</button>

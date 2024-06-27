@@ -4,7 +4,7 @@ import React from 'react';
 import { IoCalendarNumber } from "react-icons/io5";
 import { IoHeart } from "react-icons/io5";
 
-export default function TvCards({Series, Genre, Genres}) {
+export default function WatchlistTVCard({Series, Genre, Genres}) {
 
     return (
         <div className="flex flex-col items-center min-h-full">
@@ -17,13 +17,13 @@ export default function TvCards({Series, Genre, Genres}) {
             ) : (
               null
             )}
-            <div className="grid grid-cols-4 gap-8">
+            <div className="grid grid-cols-3 gap-8">
               {Series.map((serie) => (
-                <div key={serie.id} className="card w-96 bg-primary text-white shadow-xl">
-                  <figure><img src={`https://image.tmdb.org/t/p/original${serie.poster_path}`} className="max-h-[600px]" alt="serie poster" /></figure>
+                <div key={serie.id} className="card w-60 bg-primary text-white shadow-xl">
+                  <figure><img src={`https://image.tmdb.org/t/p/original${serie.poster_path}`} className="max-h-[400px]" alt="serie poster" /></figure>
                   <div className="card-body">
                     <h2 className="card-title text-center text-2xl tracking-wide">{serie.name}</h2>
-                    <div className="flex items-center justify-evenly text-center text-lg min-h-[50px]">
+                    <div className="flex flex-col items-center justify-evenly text-center text-lg min-h-[50px]">
                       <div className="flex items-center gap-2">
                         <IoCalendarNumber />
                         <p>{serie.first_air_date}</p>

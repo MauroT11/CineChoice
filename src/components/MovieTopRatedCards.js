@@ -10,11 +10,6 @@ export default function MovieTopRatedCards({movies, Genre, Genres}) {
 
     return (
         <div className="flex flex-col items-center min-h-full">
-            {Genre ? (
-              <h1 className="text-5xl font-bold my-4">Top Rated {Genre} Movies</h1>
-            ) : (
-              <h1 className="text-5xl font-bold my-4">Top Rated Movies</h1>
-            )}
             {Genres ? (
               <div className="grid grid-cols-10 text-center gap-2 mb-4">
                 {Genres.map((genre) => (

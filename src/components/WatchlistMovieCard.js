@@ -4,7 +4,7 @@ import React from 'react';
 import { IoCalendarNumber } from "react-icons/io5";
 import { IoHeart } from "react-icons/io5";
 
-export default function MovieCards({movies, Genre, Genres}) {
+export default function WatchlistMovieCard({movies, Genre, Genres}) {
 
   // console.log(movies)    
 
@@ -19,13 +19,14 @@ export default function MovieCards({movies, Genre, Genres}) {
             ) : (
               null
             )}
-            <div className="grid grid-cols-4 gap-8">
+            <div className="grid grid-cols-3 gap-8">
               {movies.map((movie) => (
-                <div key={movie.id} className="card w-96 bg-primary text-white shadow-xl">
-                  <figure><img src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} className="max-h-[600px]" alt="movie poster" /></figure>
+                <div key={movie.id} className="card w-60 bg-primary text-white shadow-xl">
+
+                  <figure><img src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} className="max-h-[400px]" alt="movie poster" /></figure>
                   <div className="card-body">
                     <h2 className="card-title text-2xl tracking-wide">{movie.title}</h2>
-                    <div className="flex items-center justify-evenly text-center text-2xl min-h-[50px]">
+                    <div className="flex flex-col items-center justify-evenly text-center text-lg min-h-[50px]">
                       <div className="flex items-center gap-2">
                         <IoCalendarNumber />
                         <p>{movie.release_date}</p>

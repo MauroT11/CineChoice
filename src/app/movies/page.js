@@ -27,6 +27,7 @@ export default async function Page() {
     return (
         <div className="flex flex-col items-center min-h-full">
           <Suspense fallback={<p>Loading...</p>}>
+          <h1 className="text-5xl font-bold my-4">Popular Movies</h1>
             <MovieCards movies={movies.results} Genres={Genres} />
             <div className="join my-4">
               <button className="join-item btn-accent btn btn-lg btn-active">1</button>

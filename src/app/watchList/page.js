@@ -1,6 +1,6 @@
 import { sql } from "@vercel/postgres"
-import MovieCards from "@/components/MovieCards"
-import TvCards from "@/components/TvCards"
+import WatchlistMovieCard from "@/components/WatchlistMovieCard"
+import WatchlistTVCard from "@/components/WatchlistTVCard"
 import { currentUser } from "@clerk/nextjs/server";
 
 export default async function Page() {
@@ -33,7 +33,7 @@ export default async function Page() {
         tvwatchlist[i] = tvdb.rows[i]
     }
 
-    console.log(movieWatchlist, tvwatchlist)
+    // console.log(movieWatchlist, tvwatchlist)
 
     for(let i = 0; i < movieWatchlist.length; i++) {
         const response = await fetch(`https://api.themoviedb.org/3/movie/${movieWatchlist[i].movieid}?language=en-US`, options)
@@ -49,10 +49,10 @@ export default async function Page() {
 
     // console.log(movieArr, tvArr)
     return (
-            <div role="tablist" className="tabs tabs-lifted px-16 py-8">
+            <div role="tablist" className="tabs tabs-lifted px-16 py-4">
                 <input type="radio" name="my_tabs_2" role="tab" className="tab text-2xl" aria-label="Movies" defaultChecked />
                 <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-box p-6">
-                    <MovieCards movies={movieArr} />
+                    <WatchlistMovieCard movies={movieArr} />
                 </div>
 
                 <input
@@ -63,7 +63,7 @@ export default async function Page() {
                     aria-label="TV Series"
                     />
                 <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-box p-6">
-                    <TvCards Series={tvArr} />
+                    <WatchlistTVCard Series={tvArr} />
                 </div>
             </div>
         

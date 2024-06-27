@@ -8,11 +8,6 @@ export default function TvTopRatedCards({Series, Genre, Genres}) {
 
     return (
         <div className="flex flex-col items-center min-h-full">
-            {Genre ? (
-              <h1 className="text-5xl font-bold my-4">Top Rated {Genre} TV Series</h1>
-            ) : (
-              <h1 className="text-5xl font-bold my-4">Top Rated TV Series</h1>
-            )}
             {Genres ? (
               <div className="grid grid-cols-8 text-center gap-4 mb-4">
                 {Genres.map((genre) => (
