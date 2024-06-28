@@ -18,7 +18,7 @@ export default function Header({ userId }) {
     }
 
     return (
-        <div className="navbar bg-primary m-2 rounded-2xl max-w-[99%]">
+        <div className="navbar bg-primary">
             <div className="navbar-start">
                 <a className="btn btn-accent text-3xl" href="/">CineChoice</a>
             </div>
