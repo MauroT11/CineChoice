@@ -1,15 +1,34 @@
+"use client"
 
 import Collections from "@/components/Collections"
 import React from 'react';
 import { Suspense } from "react";
+import CollectionsMobile from "@/components/mediaQueries/mobile/CollectionsMobile"
 
-export default async function Page({params}) {
+export default function Page({params}) {
 
-    // const [popular, setPopular] = React.useState([]);
+    const [isTablet, setIstablet] = React.useState(false);
+    const [isMobile, setIsMobile] = React.useState(false);
+    const [movies, setMovies] = React.useState({})
+
+    React.useEffect(() => {
+      const handleResize = () => {
+        setIsMobile(window.innerWidth < 932);
+        setIstablet(window.innerWidth > 933 && window.innerWidth < 1355);
+    };
+
+    handleResize();
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
     const collectionID = params.id
 
-    const APIkey = process.env.NEXT_PRIVATE_ACCESS_TOKEN;
+    const APIkey = process.env.NEXT_PUBLIC_ACCESS_TOKEN;
 
     const options = {
         method: 'GET',
@@ -19,20 +38,24 @@ export default async function Page({params}) {
         }
       };
 
-    const response = await fetch(`https://api.themoviedb.org/3/collection/${collectionID}?language=en-US`, options)
-    const movies = await response.json() 
-    // console.log(movies)
+      const fetchMovies = async () => {
+        const response = await fetch(`https://api.themoviedb.org/3/collection/${collectionID}?language=en-US`, options)
+        const movies = await response.json() 
+        console.log(movies)
+        
+        setMovies(movies)
+    }
+
+    fetchMovies()
 
     return (
-        <div className="flex flex-col items-center min-h-full">
+        <div className="flex flex-col items-center min-h-full mb-4">
           <Suspense fallback={<p>Loading...</p>}>
+          {isMobile ? (
+            <CollectionsMobile movies={movies} />
+          ) : (
             <Collections movies={movies} />
-            <div className="join my-4">
-              <button className="join-item btn-accent btn btn-lg btn-active">1</button>
-              <button className="join-item btn-primary btn btn-lg">2</button>
-              <button className="join-item btn-primary btn btn-lg">3</button>
-              <button className="join-item btn-primary btn btn-lg">4</button>
-            </div>
+          )}
           </Suspense>
             
         </div>

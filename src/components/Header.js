@@ -1,3 +1,5 @@
+"use client"
+
 import {
     ClerkProvider,
     SignedIn,
@@ -5,9 +7,27 @@ import {
     SignInButton,
     UserButton,
   } from "@clerk/nextjs";
-  import Link from "next/link";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import HeaderMobile from "@/components/mediaQueries/mobile/HeaderMobile"
 
 export default function Header({ userId }) {
+
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const handleResize = () => {
+          setIsMobile(window.innerWidth < 932);
+        };
+    
+        handleResize();
+    
+        window.addEventListener('resize', handleResize);
+    
+        return () => {
+          window.removeEventListener('resize', handleResize);
+        };
+      }, []);
 
     const UserButtonApp = {
         elements: {
@@ -17,7 +37,15 @@ export default function Header({ userId }) {
         },
     }
 
+    // if (isMobile) {
+    //     return <HeaderMobile userId={userId} UserButtonApp={UserButtonApp} />
+    // }
+
     return (
+        <div>
+        {isMobile ? (
+            <HeaderMobile userId={userId} UserButtonApp={UserButtonApp} />
+        ) : (
         <div className="navbar bg-primary">
             <div className="navbar-start">
                 <a className="btn btn-accent text-3xl" href="/">CineChoice</a>
@@ -72,8 +100,10 @@ export default function Header({ userId }) {
                     <div className="px-8">
                         <Link href={`/signIn`} state={userId} className="text-accent text-3xl">Sign In</Link>
                     </div>
-                    )}
+                )}
             </div>
+        </div>
+    )}
         </div>
     )
 }

@@ -5,7 +5,7 @@ import { currentUser } from "@clerk/nextjs/server";
 
 export default async function Page() {
 
-    const APIkey = process.env.NEXT_PRIVATE_ACCESS_TOKEN;
+    const APIkey = process.env.NEXT_PUBLIC_ACCESS_TOKEN;
     const user = await currentUser();
     const userID = user.id
     let movieWatchlist = [];
@@ -49,7 +49,7 @@ export default async function Page() {
 
     // console.log(movieArr, tvArr)
     return (
-            <div role="tablist" className="tabs tabs-lifted px-16 py-4">
+            <div role="tablist" className="tabs tabs-lifted px-4 py-4">
                 <input type="radio" name="my_tabs_2" role="tab" className="tab text-2xl" aria-label="Movies" defaultChecked />
                 <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-box p-6">
                     <WatchlistMovieCard movies={movieArr} />
@@ -59,7 +59,7 @@ export default async function Page() {
                     type="radio"
                     name="my_tabs_2"
                     role="tab"
-                    className="tab text-2xl"
+                    className="tab text-2xl min-w-40"
                     aria-label="TV Series"
                     />
                 <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-box p-6">
