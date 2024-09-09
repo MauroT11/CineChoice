@@ -49,23 +49,29 @@ export default async function Page() {
 
     // console.log(movieArr, tvArr)
     return (
-            <div role="tablist" className="tabs tabs-lifted px-4 py-4">
-                <input type="radio" name="my_tabs_2" role="tab" className="tab text-2xl" aria-label="Movies" defaultChecked />
-                <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-box p-6">
-                    <WatchlistMovieCard movies={movieArr} />
+            <div className="mt-2">
+                <div className="flex flex-col text-5xl font-bold text-center">
+                    <h1>Watchlist</h1>
                 </div>
+                <div role="tablist" className="tabs tabs-lifted px-4 py-4">
+                    <input type="radio" name="my_tabs_2" role="tab" className="tab text-2xl" aria-label="Movies" defaultChecked />
+                    <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-box p-6">
+                        <WatchlistMovieCard movies={movieArr} />
+                    </div>
 
-                <input
-                    type="radio"
-                    name="my_tabs_2"
-                    role="tab"
-                    className="tab text-2xl min-w-40"
-                    aria-label="TV Series"
-                    />
-                <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-box p-6">
-                    <WatchlistTVCard Series={tvArr} />
+                    <input
+                        type="radio"
+                        name="my_tabs_2"
+                        role="tab"
+                        className="tab text-2xl min-w-40"
+                        aria-label="TV Series"
+                        />
+                    <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-box p-6">
+                        <WatchlistTVCard Series={tvArr} />
+                    </div>
                 </div>
             </div>
+            
         
     )
 }

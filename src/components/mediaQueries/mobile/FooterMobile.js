@@ -5,7 +5,7 @@ import { MdEmail } from "react-icons/md";
 export default function FooterMobile() {
 
     return (
-        <footer className="footer footer-center bg-primary text-accent p-4">
+        <footer className="footer footer-center bg-primary text-accent p-4 gap-y-4">
                 <nav>
                     <ul className="flex text-lg flex-col gap-2 font-bold">
                         <li><a href="#">Terms & Conditions</a></li>
