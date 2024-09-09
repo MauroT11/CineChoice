@@ -6,9 +6,9 @@ import Link from "next/link"
 export default function HomeMobile() {
 
     return (
-        <div className="hero my-8">
+      <div className="hero my-8">
         <div className="hero-content flex-col bg-base-300 text-black flex rounded-3xl">
-          <Image src={cineLogo} className="max-w-sm rounded-lg shadow-2xl" />
+          <Image src={cineLogo} className="max-w-[20rem] rounded-lg shadow-2xl" />
           <div className="flex flex-col items-center text-center">
             <h1 className="text-3xl font-bold">Welcome to CineChoice!</h1>
             <p className="py-6 text-sm">CineChoice is an movie recommendation platform designed to make your film & TV serie selection process easier. Whether you’re in the mood for action, romance, or suspense, CineChoice provides the popular and top rated Films and TV Series. <br /><span className="text-3xl font-bold text-accent">Lights, camera, CineChoice!</span></p>

@@ -27,7 +27,7 @@ export default function Header({ userId }) {
         return () => {
           window.removeEventListener('resize', handleResize);
         };
-      }, []);
+    }, []);
 
     const UserButtonApp = {
         elements: {

@@ -1,38 +1,13 @@
-"use client"
-
 import { AiOutlineLinkedin } from "react-icons/ai";
 import { FaGithub } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
-import { useEffect, useState } from "react";
-import HeaderMobile from "@/components/mediaQueries/mobile/HeaderMobile"
-import FooterMobile from "@/components/mediaQueries/mobile/FooterMobile"
 
-export default function Footer() {
-
-    const [isMobile, setIsMobile] = useState(false);
-
-    useEffect(() => {
-        const handleResize = () => {
-          setIsMobile(window.innerWidth < 932);
-        };
-    
-        handleResize();
-    
-        window.addEventListener('resize', handleResize);
-    
-        return () => {
-          window.removeEventListener('resize', handleResize);
-        };
-    }, []);
+export default function FooterMobile() {
 
     return (
-        <div>
-        {isMobile ? (
-            <FooterMobile />
-        ) : (
-            <footer className="footer footer-center bg-primary text-accent px-10 py-6">
+        <footer className="footer footer-center bg-primary text-accent p-4">
                 <nav>
-                    <ul className="flex text-lg gap-8 font-bold">
+                    <ul className="flex text-lg flex-col gap-2 font-bold">
                         <li><a href="#">Terms & Conditions</a></li>
                         <li><a href="#">About</a></li>
                         <li><a href="#">Contact</a></li>
@@ -56,8 +31,5 @@ export default function Footer() {
                     <p>Copyright © {new Date().getFullYear()} - All right reserved by CineChoice Ltd</p>
                 </aside>
             </footer>
-        )       
-        } 
-        </div>
     )
 }
