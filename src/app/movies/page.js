@@ -15,7 +15,7 @@ export default function Page() {
 
     React.useEffect(() => {
       const handleResize = () => {
-        setIsMobile(window.innerWidth < 500);
+        setIsMobile(window.innerWidth < 450);
         setIstablet(window.innerWidth > 501 && window.innerWidth < 1050);
     };
 

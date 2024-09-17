@@ -12,7 +12,7 @@ export default function Home() {
   const [isMobile, setIsMobile] = useState(false);
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 932);
+      setIsMobile(window.innerWidth < 450);
       setIstablet(window.innerWidth > 933 && window.innerWidth < 1355);
     };
 

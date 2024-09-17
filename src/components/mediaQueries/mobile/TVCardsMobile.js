@@ -27,7 +27,7 @@ export default function TVCardsMobile({Series, Genre, Genres}) {
             )}
             <div className="grid mx-1 grid-cols-2 gap-2">
               {Series.map((serie) => (
-                <div key={serie.id} className="card w-48 bg-primary text-white shadow-xl">
+                <div key={serie.id} className="card w-full bg-primary text-white shadow-xl">
                   <figure><img src={`https://image.tmdb.org/t/p/original${serie.poster_path}`} className="max-h-[400px]" alt="serie poster" /></figure>
                   <div className="card-body">
                     <h2 className="card-title text-center text-2xl tracking-wide">{serie.name}</h2>

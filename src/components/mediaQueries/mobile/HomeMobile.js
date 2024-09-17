@@ -7,7 +7,7 @@ export default function HomeMobile() {
 
     return (
       <div className="hero my-8">
-        <div className="hero-content max-w-[23rem] flex-col bg-base-300 text-black flex rounded-3xl">
+        <div className="hero-content w-11/12 flex-col bg-base-300 text-black flex rounded-3xl">
           <Image src={cineLogo} className="max-w-[20rem] rounded-lg shadow-2xl" />
           <div className="flex flex-col items-center text-center">
             <h1 className="text-3xl font-bold">Welcome to CineChoice!</h1>

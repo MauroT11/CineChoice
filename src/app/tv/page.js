@@ -14,8 +14,8 @@ export default  function Page() {
 
     React.useEffect(() => {
       const handleResize = () => {
-        setIsMobile(window.innerWidth < 932);
-        setIstablet(window.innerWidth > 933 && window.innerWidth < 1355);
+        setIsMobile(window.innerWidth < 450);
+        setIstablet(window.innerWidth > 451 && window.innerWidth < 1355);
     };
 
     handleResize();
@@ -65,12 +65,12 @@ export default  function Page() {
             <TvCards Series={Series} Genres={Genres} />
           )}
             
-            <div className="join my-4">
+            {/* <div className="join my-4">
               <button className="join-item btn-accent btn btn-lg btn-active">1</button>
               <button className="join-item btn-primary btn btn-lg">2</button>
               <button className="join-item btn-primary btn btn-lg">3</button>
               <button className="join-item btn-primary btn btn-lg">4</button>
-            </div>
+            </div> */}
           </Suspense>
             
         </div>

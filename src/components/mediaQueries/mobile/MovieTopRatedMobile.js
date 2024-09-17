@@ -27,7 +27,7 @@ export default function MovieTopRatedMobile({movies, Genre, Genres}) {
             )}
             <div className="grid mx-1 grid-cols-2 gap-2">
               {movies.map((movie) => (
-                <div key={movie.id} className="card w-48 bg-primary text-white shadow-xl">
+                <div key={movie.id} className="card w-full bg-primary text-white shadow-xl">
                   <figure><img src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} className="max-h-[400px]" alt="movie poster" /></figure>
                   <div className="card-body">
                     <h2 className="card-title text-2xl tracking-wide">{movie.title}</h2>

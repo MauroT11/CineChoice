@@ -68,12 +68,6 @@ export default function Page() {
           ) : (
             <MovieTopRatedCards movies={movies} Genres={Genres} />
           )}
-            <div className="join my-4">
-              <button className="join-item btn-accent btn btn-lg btn-active">1</button>
-              <button className="join-item btn-primary btn btn-lg">2</button>
-              <button className="join-item btn-primary btn btn-lg">3</button>
-              <button className="join-item btn-primary btn btn-lg">4</button>
-            </div>
           </Suspense>
         </div>
     )
