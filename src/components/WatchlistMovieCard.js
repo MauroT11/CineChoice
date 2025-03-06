@@ -1,6 +1,7 @@
 "use client"
 
 import React from 'react';
+import Image from 'next/image';
 import { IoCalendarNumber } from "react-icons/io5";
 import { IoHeart } from "react-icons/io5";
 
@@ -23,7 +24,15 @@ export default function WatchlistMovieCard({movies, Genre, Genres}) {
               {movies.map((movie) => (
                 <div key={movie.id} className="card w-60 bg-primary text-white shadow-xl">
 
-                  <figure><img src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} className="max-h-[400px]" alt="movie poster" /></figure>
+                  <figure>
+                    <Image 
+                      src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+                      alt="movie poster"
+                      width={240}
+                      height={400}
+                      className="max-h-[400px]"
+                    />
+                  </figure>
                   <div className="card-body">
                     <h2 className="card-title text-2xl tracking-wide">{movie.title}</h2>
                     <div className="flex flex-col items-center justify-evenly text-center text-lg min-h-[50px]">

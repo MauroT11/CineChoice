@@ -1,6 +1,7 @@
 "use client"
 
 import React from 'react';
+import Image from 'next/image';
 import { IoCalendarNumber } from "react-icons/io5";
 import { IoHeart } from "react-icons/io5";
 
@@ -20,7 +21,15 @@ export default function WatchlistTVCard({Series, Genre, Genres}) {
             <div className="grid grid-cols-3 gap-8">
               {Series.map((serie) => (
                 <div key={serie.id} className="card w-60 bg-primary text-white shadow-xl">
-                  <figure><img src={`https://image.tmdb.org/t/p/original${serie.poster_path}`} className="max-h-[400px]" alt="serie poster" /></figure>
+                  <figure>
+                    <Image 
+                      src={`https://image.tmdb.org/t/p/original${serie.poster_path}`}
+                      alt="serie poster"
+                      width={240}
+                      height={400}
+                      className="max-h-[400px]"
+                    />
+                  </figure>
                   <div className="card-body">
                     <h2 className="card-title text-center text-2xl tracking-wide">{serie.name}</h2>
                     <div className="flex flex-col items-center justify-evenly text-center text-lg min-h-[50px]">

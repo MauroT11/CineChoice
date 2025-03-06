@@ -8,6 +8,7 @@ import {
     UserButton,
 } from "@clerk/nextjs";
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 export default function Header({ userId }) {
@@ -38,11 +39,18 @@ export default function Header({ userId }) {
 
     return (
         <div>
-                <div className="navbar bg-primary shadow-lg">
+                <div className="navbar bg-primary px-8 shadow-lg">
                     <div className="navbar-start">
-                        <a className="btn btn-accent text-3xl hover:scale-105 transition-transform duration-200" href="/">
+                        <Link href="/" className="btn btn-accent text-3xl hover:scale-105 transition-transform duration-200 px-2">
+                            <Image
+                                src="/cinechoiceFavicon.png"
+                                alt="CineChoice Logo"
+                                width={48}
+                                height={48}
+                                priority
+                            />
                             CineChoice
-                        </a>
+                        </Link>
                     </div>
                     <div className="navbar-center">
                         <ul className="menu menu-horizontal text-xl gap-6 px-2">
