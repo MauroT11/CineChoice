@@ -56,7 +56,7 @@ export default function Page() {
     
 
     return (
-        <div className="flex flex-col items-center min-h-full py-8">
+        <div className="flex flex-col items-center min-h-screen py-8">
           <Suspense fallback={<p>Loading...</p>}>
           <h1 className="text-5xl font-bold my-8">Top Rated Movies</h1>
             <MovieCards movies={movies} Genres={Genres} topRated={true} />

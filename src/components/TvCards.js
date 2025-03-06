@@ -72,9 +72,13 @@ export default function TvCards({Series, Genres, topRated}) {
             )}
             
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6 w-full max-w-[1800px] px-6 mx-auto place-items-center">
-                {Series.map((serie) => (
+                {Series.map((serie, index) => (
                     <div key={serie.id} 
-                        className="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 group max-w-[250px] h-[500px] cursor-pointer"
+                        className="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 group max-w-[250px] h-[500px] cursor-pointer opacity-0 animate-fade-up"
+                        style={{ 
+                            animationDelay: `${index * 150}ms`,
+                            animationFillMode: 'forwards'
+                        }}
                         onClick={() => document.getElementById(`my_modal_${serie.id}`).showModal()}
                     >
                         <figure className="relative h-[375px]">

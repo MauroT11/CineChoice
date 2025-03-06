@@ -51,7 +51,7 @@ export default async function Page({params}) {
 
     return (
         <Suspense fallback={<Loading />}>
-            <div className="flex flex-col items-center min-h-full py-12 px-4 bg-gradient-to-b from-base-200 to-base-100">
+            <div className="flex flex-col items-center min-h-screen py-12 px-4 bg-gradient-to-b from-base-200 to-base-100">
                 <div className="container mx-auto max-w-7xl">
                     <div className="flex flex-col gap-4 items-center mb-8">
                         <h1 className="text-5xl md:text-6xl font-bold text-center bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent py-2">{movie.title}</h1>

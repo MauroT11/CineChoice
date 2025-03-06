@@ -82,9 +82,13 @@ export default function MovieCards({movies, Genres, topRated, collection}) {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-6 w-full">
-            {movies.parts?.map((movie) => (
+            {movies.parts?.map((movie, index) => (
               <div key={movie.id} 
-                className="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 group max-w-[250px] h-[500px] cursor-pointer"
+                className="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 group max-w-[250px] h-[500px] cursor-pointer opacity-0 animate-fade-up"
+                style={{ 
+                  animationDelay: `${index * 150}ms`,
+                  animationFillMode: 'forwards'
+                }}
                 onClick={() => document.getElementById(`my_modal_${movie.id}`).showModal()}
               >
                 <figure className="relative h-[375px]">
@@ -128,9 +132,13 @@ export default function MovieCards({movies, Genres, topRated, collection}) {
         </div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6 w-full max-w-[1800px] px-6 mx-auto place-items-center">
-          {movies.map((movie) => (
+          {movies.map((movie, index) => (
             <div key={movie.id} 
-              className="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 group max-w-[250px] h-[500px] cursor-pointer"
+              className="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 group max-w-[250px] h-[500px] cursor-pointer opacity-0 animate-fade-up"
+              style={{ 
+                animationDelay: `${index * 150}ms`,
+                animationFillMode: 'forwards'
+              }}
               onClick={() => document.getElementById(`my_modal_${movie.id}`).showModal()}
             >
               <figure className="relative h-[375px]">

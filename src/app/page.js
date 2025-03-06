@@ -44,10 +44,10 @@ export default function Home() {
                 <div className="flex flex-col gap-6 group">
                   <h2 className="text-4xl font-bold text-primary group-hover:text-accent transition-colors duration-300">Movies</h2>
                   <div className="flex flex-col lg:flex-row gap-3">
-                    <Link href="/movies" className="relative btn bg-white/90 hover:bg-accent text-accent hover:text-white transition-all duration-300 border-accent border-2 overflow-hidden shadow-lg hover:shadow-accent/20">
+                    <Link href="/movies" className="relative btn bg-white/90 hover:bg-accent text-accent hover:text-white transition-all duration-300 border-accent border-2 overflow-hidden shadow-lg hover:shadow-accent/20 focus:outline-none">
                       <span className="relative z-10">Popular</span>
                     </Link>
-                    <Link href="/movies/topRated" className="relative btn bg-white/90 hover:bg-accent text-accent hover:text-white transition-all duration-300 border-accent border-2 overflow-hidden shadow-lg hover:shadow-accent/20">
+                    <Link href="/movies/topRated" className="relative btn bg-white/90 hover:bg-accent text-accent hover:text-white transition-all duration-300 border-accent border-2 overflow-hidden shadow-lg hover:shadow-accent/20 focus:outline-none">
                       <span className="relative z-10">Top Rated</span>
                     </Link>
                   </div>
@@ -55,10 +55,10 @@ export default function Home() {
                 <div className="flex flex-col gap-6 group">
                   <h2 className="text-4xl font-bold text-primary group-hover:text-accent transition-colors duration-300">TV Series</h2>
                   <div className="flex flex-col lg:flex-row gap-3">
-                    <Link href="/tv" className="relative btn bg-white/90 hover:bg-accent text-accent hover:text-white transition-all duration-300 border-accent border-2 overflow-hidden shadow-lg hover:shadow-accent/20">
+                    <Link href="/tv" className="relative btn bg-white/90 hover:bg-accent text-accent hover:text-white transition-all duration-300 border-accent border-2 overflow-hidden shadow-lg hover:shadow-accent/20 focus:outline-none">
                       <span className="relative z-10">Popular</span>
                     </Link>
-                    <Link href="/tv/topRated" className="relative btn bg-white/90 hover:bg-accent text-accent hover:text-white transition-all duration-300 border-accent border-2 overflow-hidden shadow-lg hover:shadow-accent/20">
+                    <Link href="/tv/topRated" className="relative btn bg-white/90 hover:bg-accent text-accent hover:text-white transition-all duration-300 border-accent border-2 overflow-hidden shadow-lg hover:shadow-accent/20 focus:outline-none">
                       <span className="relative z-10">Top Rated</span>
                     </Link>
                   </div>

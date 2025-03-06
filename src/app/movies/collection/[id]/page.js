@@ -48,7 +48,7 @@ export default function Page({params}) {
     fetchMovies()
 
     return (
-        <div className="flex flex-col items-center min-h-full py-8">
+        <div className="flex flex-col items-center min-h-screen py-8">
           <Suspense fallback={<p>Loading...</p>}>
             <MovieCards movies={movies} collection={true} />
           </Suspense>

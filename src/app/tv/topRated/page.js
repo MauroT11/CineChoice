@@ -55,7 +55,7 @@ export default  function Page() {
     
 
     return (
-        <div className="flex flex-col items-center py-8 min-h-full py-8">
+        <div className="flex flex-col items-center py-8 min-h-screen">
           <h1 className="text-5xl text-center font-bold my-8">Top Rated TV Series</h1>
             <TvCards Series={Series} Genres={Genres} topRated={true} />
         </div>

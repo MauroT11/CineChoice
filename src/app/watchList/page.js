@@ -51,7 +51,7 @@ export default async function Page() {
     return (
         <div className="container mx-auto px-4 py-8 max-w-7xl">
             <div className="flex flex-col items-center mb-8">
-                <h1 className="text-5xl font-bold text-center bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent py-2">
+                <h1 className="text-5xl font-bold text-center bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent py-4">
                     My Watchlist
                 </h1>
             </div>
