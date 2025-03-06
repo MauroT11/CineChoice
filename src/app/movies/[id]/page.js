@@ -1,5 +1,6 @@
 "use client"
 import React from 'react';
+import Image from 'next/image';
 import { IoHeart } from "react-icons/io5";
 import { IoCalendarNumber } from "react-icons/io5";
 import { IoTime } from "react-icons/io5";
@@ -7,7 +8,6 @@ import { TbRating18Plus } from "react-icons/tb";
 import { Suspense } from "react";
 import { sql } from "@vercel/postgres"
 import { currentUser } from "@clerk/nextjs/server";
-import MovieInfoMobile from "@/components/mediaQueries/mobile/MovieInfoMobile"
 
 export default function Page({params}) {
 
@@ -64,9 +64,6 @@ export default function Page({params}) {
     return (
         <div className="flex flex-col items-center min-h-full py-8">
             
-            {isMobile ? (
-                <MovieInfoMobile movie={movie} movieID={movieID} userID={userID} />
-            ) : (
                 <Suspense fallback={<p>Loading...</p>}>
                 <div>
                 <div className="flex flex-col gap-2 items-center my-4">
@@ -75,7 +72,14 @@ export default function Page({params}) {
                 </div>
                     <div className="grid grid-cols-2 mx-52">
                         <div className="flex flex-col gap-4 items-center">
-                            <img src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} className="max-h-[600px] rounded-2xl" alt="movie poster" />
+                            <Image 
+                                src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+                                width={400}
+                                height={600}
+                                className="rounded-2xl"
+                                alt="movie poster"
+                                priority
+                            />
                             <form action={handleWatchList}>
                                 <button className="btn btn-accent hover:btn-secondary text-2xl">Add to Watch List</button>
                             </form>
@@ -128,7 +132,14 @@ export default function Page({params}) {
                             {movie.belongs_to_collection ? (
                                 <div className="flex flex-col items-center">
                                     <a href={`/movies/collection/${movie.belongs_to_collection.id}`} className="text-center text-accent text-2xl hover:text-secondary">{movie.belongs_to_collection.name}</a>
-                                    <img src={`https://image.tmdb.org/t/p/original${movie.belongs_to_collection.poster_path}`} className="max-w-[200px] rounded-2xl" alt="movie poster" />
+                                    <Image 
+                                        src={`https://image.tmdb.org/t/p/original${movie.belongs_to_collection.poster_path}`}
+                                        width={200}
+                                        height={300}
+                                        className="rounded-2xl"
+                                        alt="collection poster"
+                                        priority={false}
+                                    />
                                 </div>
                             ) : (
                                 null
@@ -138,10 +149,7 @@ export default function Page({params}) {
                         </div>
                     </div>
                     </div>
-                </Suspense>
-                )}
-            
-        
+                </Suspense>          
         </div>
     )
 }

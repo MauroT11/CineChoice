@@ -1,9 +1,8 @@
 "use client"
 
-import Collections from "@/components/Collections"
 import React from 'react';
 import { Suspense } from "react";
-import CollectionsMobile from "@/components/mediaQueries/mobile/CollectionsMobile"
+import MovieCards from "@/components/MovieCards";
 
 export default function Page({params}) {
 
@@ -41,7 +40,7 @@ export default function Page({params}) {
       const fetchMovies = async () => {
         const response = await fetch(`https://api.themoviedb.org/3/collection/${collectionID}?language=en-US`, options)
         const movies = await response.json() 
-        console.log(movies)
+        // console.log(movies)
         
         setMovies(movies)
     }
@@ -49,13 +48,9 @@ export default function Page({params}) {
     fetchMovies()
 
     return (
-        <div className="flex flex-col items-center min-h-full mb-4">
+        <div className="flex flex-col items-center min-h-full py-8">
           <Suspense fallback={<p>Loading...</p>}>
-          {isMobile ? (
-            <CollectionsMobile movies={movies} />
-          ) : (
-            <Collections movies={movies} />
-          )}
+            <MovieCards movies={movies} collection={true} />
           </Suspense>
             
         </div>

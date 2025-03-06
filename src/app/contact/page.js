@@ -40,7 +40,7 @@ export default function Contact() {
         <div className="bg-white shadow-xl rounded-lg p-8">
           <h1 className="text-3xl font-bold text-center text-gray-800 mb-4">Contact Us</h1>
           <p className="text-center text-gray-600 mb-8">
-            Have a question or need assistance? We'd love to hear from you! Use the form below to send us a message and we'll get back to you as soon as possible.
+            Have a question or need assistance? We&apos;d love to hear from you! Use the form below to send us a message and we&apos;ll get back to you as soon as possible.
           </p>
           
           <form onSubmit={handleSubmit} className="space-y-6">
@@ -117,7 +117,7 @@ export default function Contact() {
 
           {submitStatus === 'sent' && (
             <div className="mt-4 text-center text-green-600">
-              Thank you for your message! We'll get back to you soon.
+              Thank you for your message! We&apos;ll get back to you soon.
             </div>
           )}
 
@@ -129,7 +129,7 @@ export default function Contact() {
                   <h3 className="text-lg leading-6 font-medium text-gray-900">Success!</h3>
                   <div className="mt-2 px-7 py-3">
                     <p className="text-sm text-gray-500">
-                      Thank you for your message! We'll get back to you soon.
+                      Thank you for your message! We&apos;ll get back to you soon.
                     </p>
                   </div>
                   <div className="items-center px-4 py-3">

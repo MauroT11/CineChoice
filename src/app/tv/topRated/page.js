@@ -1,8 +1,7 @@
 "use client"
 
-import TvTopRatedCards from "@/components/TvTopRatedCards"
 import React from 'react';
-import TVTopRatedCardsMobile from "@/components/mediaQueries/mobile/TVTopRatedCardsMobile"
+import TvCards from "@/components/TvCards";
 
 export default  function Page() {
 
@@ -56,20 +55,9 @@ export default  function Page() {
     
 
     return (
-        <div className="flex flex-col items-center min-h-full">
-          <h1 className="text-5xl text-center font-bold my-4">Top Rated TV Series</h1>
-          {isMobile? (
-            <TVTopRatedCardsMobile Series={Series} Genres={Genres} />
-          ) : (
-            <TvTopRatedCards Series={Series} Genres={Genres} />
-          )}
-            
-            <div className="join my-4">
-              <button className="join-item btn-accent btn btn-lg btn-active">1</button>
-              <button className="join-item btn-primary btn btn-lg">2</button>
-              <button className="join-item btn-primary btn btn-lg">3</button>
-              <button className="join-item btn-primary btn btn-lg">4</button>
-            </div>
+        <div className="flex flex-col items-center py-8 min-h-full py-8">
+          <h1 className="text-5xl text-center font-bold my-8">Top Rated TV Series</h1>
+            <TvCards Series={Series} Genres={Genres} topRated={true} />
         </div>
     )
 }

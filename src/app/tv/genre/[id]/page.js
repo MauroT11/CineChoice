@@ -3,7 +3,6 @@
 import TvCards from "@/components/TvCards"
 import React from 'react';
 import { Suspense } from "react";
-import TVCardsMobile from "@/components/mediaQueries/mobile/TVCardsMobile"
 
 export default  function Page({params}) {
 
@@ -68,21 +67,10 @@ export default  function Page({params}) {
     }
     // console.log(genre)
     return (
-        <div className="flex flex-col items-center min-h-full">
+        <div className="flex flex-col items-center min-h-full py-8">
           <Suspense fallback={<p>Loading...</p>}>
-          <h1 className="text-4xl text-center font-bold my-4">Popular <span className="text-accent">{Genre}</span> TV Series</h1>
-          {isMobile ? (
-            <TVCardsMobile Series={Series} Genre={Genre} />
-          ) : (
+          <h1 className="text-4xl text-center font-bold my-8">Popular <span className="text-accent">{Genre}</span> TV Series</h1>
             <TvCards Series={Series} Genre={Genre} />
-          )}
-            
-            <div className="join my-4">
-              <button className="join-item btn-accent btn btn-lg btn-active">1</button>
-              <button className="join-item btn-primary btn btn-lg">2</button>
-              <button className="join-item btn-primary btn btn-lg">3</button>
-              <button className="join-item btn-primary btn btn-lg">4</button>
-            </div>
           </Suspense>
             
         </div>

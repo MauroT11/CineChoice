@@ -1,9 +1,8 @@
 "use client"
 
-import TvTopRatedCards from "@/components/TvTopRatedCards"
 import React from 'react';
 import { Suspense } from "react";
-import TVTopRatedCardsMobile from "@/components/mediaQueries/mobile/TVTopRatedCardsMobile"
+import TvCards from "@/components/TvCards";
 
 export default function Page({params}) {
 
@@ -68,21 +67,14 @@ export default function Page({params}) {
     }
     // console.log(genre)
     return (
-        <div className="flex flex-col items-center min-h-full">
+        <div className="flex flex-col items-center min-h-full py-8">
           <Suspense fallback={<p>Loading..</p>}>
-          <h1 className="text-4xl text-center font-bold my-4">Top Rated <span className="text-accent">{Genre}</span> TV Series</h1>
+          <h1 className="text-4xl text-center font-bold my-8">Top Rated <span className="text-accent">{Genre}</span> TV Series</h1>
           {isMobile ? (
             <TVTopRatedCardsMobile Series={Series} Genre={Genre} />
           ) : (
-            <TvTopRatedCards Series={Series} Genre={Genre} />
+            <TvCards Series={Series} Genres={Genres} topRated={true}/>
           )}
-            
-            <div className="join my-4">
-              <button className="join-item btn-accent btn btn-lg btn-active">1</button>
-              <button className="join-item btn-primary btn btn-lg">2</button>
-              <button className="join-item btn-primary btn btn-lg">3</button>
-              <button className="join-item btn-primary btn btn-lg">4</button>
-            </div>
           </Suspense>
             
         </div>

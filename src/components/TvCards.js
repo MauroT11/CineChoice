@@ -4,18 +4,22 @@ import React from 'react';
 import { IoCalendarNumber } from "react-icons/io5";
 import { IoHeart } from "react-icons/io5";
 
-export default function TvCards({Series, Genre, Genres}) {
+export default function TvCards({Series, Genres, topRated}) {
 
     return (
         <div className="flex flex-col items-center min-h-full">
-            {Genres ? (
+            {topRated ? (
+              <div className="grid grid-cols-8 text-center gap-4 mb-4">
+                {Genres.map((genre) => (
+                  <a href={`/tv/topRated/genre/${genre.id}`} key={genre.id} className="border-2 border-secondary rounded-3xl px-2 hover:border-accent hover:bg-accent hover:text-base-100 text-lg">{genre.name}</a>
+                ))}
+              </div>
+            ) : (
               <div className="grid grid-cols-8 text-center gap-4 mb-4">
                 {Genres.map((genre) => (
                   <a href={`/tv/genre/${genre.id}`} key={genre.id} className="border-2 border-secondary rounded-3xl px-2 hover:border-accent hover:bg-accent hover:text-base-100 text-lg">{genre.name}</a>
                 ))}
               </div>
-            ) : (
-              null
             )}
             <div className="grid grid-cols-4 gap-8">
               {Series.map((serie) => (

@@ -3,7 +3,6 @@
 import MovieCards from "@/components/MovieCards"
 import React from 'react';
 import { Suspense } from "react";
-import MovieCardsMobile from "@/components/mediaQueries/mobile/MovieCardsMobile"
 
 export default function Page({params}) {
 
@@ -70,16 +69,10 @@ export default function Page({params}) {
     }
     
     return (
-        <div className="flex flex-col items-center min-h-full">
+        <div className="flex flex-col items-center min-h-full py-8">
           <Suspense fallback={<p>Loading...</p>}>
-          <h1 className="text-5xl font-bold text-center my-4">Popular {Genre} Movies</h1>
-            <MovieCardsMobile movies={movies} Genre={Genre} />
-            <div className="join my-4">
-              <button className="join-item btn-accent btn btn-lg btn-active">1</button>
-              <button className="join-item btn-primary btn btn-lg">2</button>
-              <button className="join-item btn-primary btn btn-lg">3</button>
-              <button className="join-item btn-primary btn btn-lg">4</button>
-            </div>
+          <h1 className="text-5xl font-bold text-center my-8">Popular <span className="text-accent">{Genre}</span> Movies</h1>
+            <MovieCards movies={movies} Genres={Genres} />
           </Suspense>
             
         </div>

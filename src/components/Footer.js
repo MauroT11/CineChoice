@@ -4,8 +4,7 @@ import { AiOutlineLinkedin } from "react-icons/ai";
 import { FaGithub } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { useEffect, useState } from "react";
-import HeaderMobile from "@/components/mediaQueries/mobile/HeaderMobile"
-import FooterMobile from "@/components/mediaQueries/mobile/FooterMobile"
+
 
 export default function Footer() {
 
@@ -27,9 +26,7 @@ export default function Footer() {
 
     return (
         <div>
-        {isMobile ? (
-            <FooterMobile />
-        ) : (
+
             <footer className="footer footer-center bg-primary text-accent px-10 py-6">
                 <nav>
                     <ul className="flex text-2xl gap-8 font-bold">
@@ -57,8 +54,6 @@ export default function Footer() {
                     <p>Copyright © {new Date().getFullYear()} - All right reserved by CineChoice Ltd</p>
                 </aside>
             </footer>
-        )       
-        } 
         </div>
     )
 }

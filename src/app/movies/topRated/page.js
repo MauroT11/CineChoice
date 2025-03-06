@@ -1,10 +1,8 @@
 "use client"
 
-import MovieTopRatedCards from "@/components/MovieTopRatedCards"
+import MovieCards from "@/components/MovieCards";
 import React from 'react';
 import { Suspense } from "react";
-import MovieTopRatedMobile from "@/components/mediaQueries/mobile/MovieTopRatedMobile"
-import MovieTopRatedTablet from "@/components/mediaQueries/tablet/MovieTopRatedTablet"
 
 export default function Page() {
 
@@ -58,16 +56,10 @@ export default function Page() {
     
 
     return (
-        <div className="flex flex-col items-center min-h-full">
+        <div className="flex flex-col items-center min-h-full py-8">
           <Suspense fallback={<p>Loading...</p>}>
-          <h1 className="text-5xl font-bold my-4">Top Rated Movies</h1>
-          {isMobile ? (
-            <MovieTopRatedMobile movies={movies} Genres={Genres} />
-          ) : isTablet ? (
-            <MovieTopRatedTablet movies={movies} Genres={Genres} />
-          ) : (
-            <MovieTopRatedCards movies={movies} Genres={Genres} />
-          )}
+          <h1 className="text-5xl font-bold my-8">Top Rated Movies</h1>
+            <MovieCards movies={movies} Genres={Genres} topRated={true} />
           </Suspense>
         </div>
     )
