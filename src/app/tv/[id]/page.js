@@ -10,10 +10,10 @@ import { currentUser } from "@clerk/nextjs/server";
 
 export default async function Page({params}) {
 
-    const APIkey = process.env.NEXT_PRIVATE_ACCESS_TOKEN;
+    const APIkey = process.env.NEXT_PUBLIC_ACCESS_TOKEN;
     const tvID = params.id
     const user = await currentUser();
-    const userID = user.id
+    const userID = user?.id
 
     const options = {
         method: 'GET',
@@ -34,7 +34,7 @@ export default async function Page({params}) {
     }
 
     return (
-        <div className="flex flex-col items-center min-h-full">
+        <div className="flex flex-col items-center min-h-full py-8">
             <Suspense fallback={<p>Loading...</p>}>
                 <div className="flex flex-col gap-2 items-center my-4">
             <h1 className="text-5xl font-bold">{movie.name}</h1>
@@ -51,7 +51,7 @@ export default async function Page({params}) {
                     <div className="flex justify-center text-2xl gap-6 my-1">
                         <div className="flex items-center gap-2">
                             <IoHeart />
-                            <p>{movie.vote_average.toFixed(1)}/10</p>
+                            <p>{movie.vote_average?.toFixed(1)}/10</p>
                         </div>
                         <div className="flex items-center gap-2">
                             <ImBooks />
@@ -73,7 +73,7 @@ export default async function Page({params}) {
                         </div>
                     </div>
                     <div className="flex justify-center text-accent text-2xl gap-8">
-                        {movie.genres.map((genre) => (
+                        {movie.genres?.map((genre) => (
                             <a href={`/tv/genre/${genre.id}`} key={genre.id} className="hover:text-secondary">{genre.name}</a>
                         ))}
                     </div>
@@ -81,7 +81,7 @@ export default async function Page({params}) {
                         <div className="flex gap-2 text-2xl mb-4">
                             <p >Spoken Language:</p>
                             <ul className="flex gap-2">
-                                {movie.spoken_languages.map((lang) => (
+                                {movie.spoken_languages?.map((lang) => (
                                     <li key={lang.name} className="font-bold">{lang.english_name}</li>
                                 ))}
                             </ul>

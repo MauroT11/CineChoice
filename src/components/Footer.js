@@ -33,10 +33,11 @@ export default function Footer() {
             <footer className="footer footer-center bg-primary text-accent px-10 py-6">
                 <nav>
                     <ul className="flex text-2xl gap-8 font-bold">
-                        <li><a href="#">Terms & Conditions</a></li>
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Contact</a></li>
-                        <li><a href="#">Blog</a></li>
+                        <li><a href="/legal/terms">Terms of Use</a></li>
+                        <li><a href="/legal/privacy">Privacy Policy</a></li>
+                        <li><a href="/about">About</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                        {/* <li><a href="#">Blog</a></li> */}
                     </ul>
                 </nav>
                 <nav>

@@ -62,7 +62,7 @@ export default function Page({params}) {
     }
 
     return (
-        <div className="flex flex-col items-center min-h-full">
+        <div className="flex flex-col items-center min-h-full py-8">
             
             {isMobile ? (
                 <MovieInfoMobile movie={movie} movieID={movieID} userID={userID} />
