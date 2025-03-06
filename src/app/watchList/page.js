@@ -49,29 +49,36 @@ export default async function Page() {
 
     // console.log(movieArr, tvArr)
     return (
-            <div className="mt-2">
-                <div className="flex flex-col text-5xl font-bold text-center">
-                    <h1>Watchlist</h1>
+        <div className="container mx-auto px-4 py-8 max-w-7xl">
+            <div className="flex flex-col items-center mb-8">
+                <h1 className="text-5xl font-bold text-center bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent py-2">
+                    My Watchlist
+                </h1>
+            </div>
+            <div role="tablist" className="tabs tabs-lifted w-full">
+                <input 
+                    type="radio" 
+                    name="my_tabs_2" 
+                    role="tab" 
+                    className="tab tab-lg font-semibold hover:text-primary transition-colors" 
+                    aria-label="Movies" 
+                    defaultChecked 
+                />
+                <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-box p-8 shadow-lg">
+                    <WatchlistMovieCard movies={movieArr} />
                 </div>
-                <div role="tablist" className="tabs tabs-lifted px-4 py-4">
-                    <input type="radio" name="my_tabs_2" role="tab" className="tab text-2xl" aria-label="Movies" defaultChecked />
-                    <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-box p-6">
-                        <WatchlistMovieCard movies={movieArr} />
-                    </div>
 
-                    <input
-                        type="radio"
-                        name="my_tabs_2"
-                        role="tab"
-                        className="tab text-2xl min-w-40"
-                        aria-label="TV Series"
-                        />
-                    <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-box p-6">
-                        <WatchlistTVCard Series={tvArr} />
-                    </div>
+                <input
+                    type="radio"
+                    name="my_tabs_2"
+                    role="tab"
+                    className="tab tab-lg font-semibold hover:text-primary transition-colors"
+                    aria-label="TV Series"
+                />
+                <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-box p-8 shadow-lg">
+                    <WatchlistTVCard Series={tvArr} />
                 </div>
             </div>
-            
-        
+        </div>
     )
 }

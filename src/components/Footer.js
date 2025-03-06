@@ -25,33 +25,18 @@ export default function Footer() {
     }, []);
 
     return (
-        <div>
-
-            <footer className="footer footer-center bg-primary text-accent px-10 py-6">
-                <nav>
-                    <ul className="flex text-2xl gap-8 font-bold">
-                        <li><a href="/legal/terms">Terms of Use</a></li>
-                        <li><a href="/legal/privacy">Privacy Policy</a></li>
-                        <li><a href="/about">About</a></li>
-                        <li><a href="/contact">Contact</a></li>
-                        {/* <li><a href="#">Blog</a></li> */}
+        <div className="mt-auto">
+            <footer className="footer footer-center bg-primary text-accent p-8 backdrop-blur-sm shadow-lg">
+                <nav className="w-full max-w-4xl mx-auto">
+                    <ul className="flex flex-wrap justify-center text-lg md:text-xl gap-6 md:gap-8 font-medium">
+                        <li><a href="/legal/terms" className="hover:text-secondary transition-colors duration-200">Terms of Use</a></li>
+                        <li><a href="/legal/privacy" className="hover:text-secondary transition-colors duration-200">Privacy Policy</a></li>
+                        <li><a href="/about" className="hover:text-secondary transition-colors duration-200">About</a></li>
+                        <li><a href="/contact" className="hover:text-secondary transition-colors duration-200">Contact</a></li>
                     </ul>
                 </nav>
-                <nav>
-                    <div className="grid grid-flow-col gap-4">
-                        <a href="mailto:mauro.co.uk@hotmail.com">
-                            <MdEmail className="h-10 w-10" />
-                        </a>
-                        <a href="https://github.com/MauroT11/CineChoice">
-                            <FaGithub className="h-10 w-10" />
-                        </a>
-                        <a href="https://www.linkedin.com/in/mauro-trovoada-76852b240/">
-                            <AiOutlineLinkedin className="h-10 w-10" />
-                        </a>
-                    </div>
-                </nav>
-                <aside>
-                    <p>Copyright © {new Date().getFullYear()} - All right reserved by CineChoice Ltd</p>
+                <aside className="text-sm text-accent/80">
+                    <p>Copyright © {new Date().getFullYear()} - All rights reserved by CineChoice Ltd</p>
                 </aside>
             </footer>
         </div>

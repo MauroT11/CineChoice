@@ -70,7 +70,7 @@ export default  function Page({params}) {
         <div className="flex flex-col items-center min-h-full py-8">
           <Suspense fallback={<p>Loading...</p>}>
           <h1 className="text-4xl text-center font-bold my-8">Popular <span className="text-accent">{Genre}</span> TV Series</h1>
-            <TvCards Series={Series} Genre={Genre} />
+            <TvCards Series={Series} Genres={Genres} />
           </Suspense>
             
         </div>
