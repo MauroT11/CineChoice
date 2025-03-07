@@ -53,7 +53,7 @@ export default async function Page({params}) {
             <div className="flex flex-col items-center min-h-screen py-12 px-4 bg-gradient-to-b from-base-200 to-base-100">
                 <div className="container mx-auto max-w-7xl">
                     <div className="flex flex-col gap-4 items-center mb-8">
-                        <h1 className="text-5xl md:text-6xl font-bold text-center bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent py-2">{tv.name}</h1>
+                        <h1 className="text-5xl md:text-6xl font-bold text-center text-primary py-2">{tv.name}</h1>
                         <h4 className="text-xl md:text-2xl text-center text-base-content/80 italic">{tv.tagline}</h4>
                     </div>
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full">

@@ -38,7 +38,7 @@ export default function Page() {
   return (
     <div className="flex flex-col min-h-screen items-center mb-4 py-8">
       <Suspense fallback={<p className="text-6xl">Loading...</p>}>
-        <h1 className="text-5xl font-bold my-8">Popular Movies</h1>
+        <h1 className="text-5xl text-primary font-bold my-8">Popular Movies</h1>
         <MovieCards movies={movies} Genres={Genres} />
       </Suspense>
     </div>

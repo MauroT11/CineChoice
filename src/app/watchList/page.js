@@ -1,57 +1,51 @@
-import { sql } from "@vercel/postgres"
+"use client"
+
+import { useEffect, useState } from "react"
 import WatchlistMovieCard from "@/components/WatchlistMovieCard"
 import WatchlistTVCard from "@/components/WatchlistTVCard"
-import { currentUser } from "@clerk/nextjs/server";
+import { removeFromMovieWatchlist, removeFromTVWatchlist, getWatchlistData } from "./actions"
 
-export default async function Page() {
+export default function Page() {
+    const [movieArr, setMovieArr] = useState([]);
+    const [tvArr, setTvArr] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
-    const APIkey = process.env.NEXT_PUBLIC_ACCESS_TOKEN;
-    const user = await currentUser();
-    const userID = user.id
-    let movieWatchlist = [];
-    let tvwatchlist = [];
-    let movieArr = [];
-    let tvArr = [];
-    const options = {
-        method: 'GET',
-        headers: {
-          accept: 'application/json',
-          Authorization: `Bearer ${APIkey}`
-        }
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const { movieArr, tvArr } = await getWatchlistData();
+                setMovieArr(movieArr);
+                setTvArr(tvArr);
+            } catch (error) {
+                console.error("Error fetching watchlist:", error);
+            } finally {
+                setIsLoading(false);
+            }
+        };
+
+        fetchData();
+    }, []);
+
+    const handleMovieRemove = async (movieId) => {
+        await removeFromMovieWatchlist(movieId);
+        setMovieArr(prev => prev.filter(movie => movie.id !== movieId));
     };
 
-    const tvdb = (await sql`select * from tvwatchlist where userid = ${userID}`)
-    const moviedb = (await sql`select * from moviewatchlist where userid = ${userID}`)
+    const handleTVRemove = async (tvId) => {
+        await removeFromTVWatchlist(tvId);
+        setTvArr(prev => prev.filter(tv => tv.id !== tvId));
+    };
 
-    // console.log(moviedb.rows, tvdb.rows)
-
-    for(let i = 0; i < moviedb.rowCount; i++){
-        movieWatchlist[i] = moviedb.rows[i]
+    if (isLoading) {
+        return <div className="container mx-auto px-4 py-8 flex justify-center min-h-screen">
+            <span className="loading loading-spinner loading-lg"></span>
+        </div>;
     }
 
-    for(let i = 0; i < tvdb.rowCount; i++){
-        tvwatchlist[i] = tvdb.rows[i]
-    }
-
-    // console.log(movieWatchlist, tvwatchlist)
-
-    for(let i = 0; i < movieWatchlist.length; i++) {
-        const response = await fetch(`https://api.themoviedb.org/3/movie/${movieWatchlist[i].movieid}?language=en-US`, options)
-        const movie = await response.json()
-        movieArr[i] = movie;
-    }
-
-    for(let i = 0; i < tvwatchlist.length; i++) {
-        const response = await fetch(`https://api.themoviedb.org/3/tv/${tvwatchlist[i].tvid}?language=en-US`, options)
-        const tv = await response.json()
-        tvArr[i] = tv;
-    }
-
-    // console.log(movieArr, tvArr)
     return (
-        <div className="container mx-auto px-4 py-8 max-w-7xl">
+        <div className="container mx-auto px-4 py-8 max-w-7xl min-h-screen">
             <div className="flex flex-col items-center mb-8">
-                <h1 className="text-5xl font-bold text-center bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent py-4">
+                <h1 className="text-5xl font-bold text-center text-primary py-4">
                     My Watchlist
                 </h1>
             </div>
@@ -60,23 +54,31 @@ export default async function Page() {
                     type="radio" 
                     name="my_tabs_2" 
                     role="tab" 
-                    className="tab tab-lg font-semibold hover:text-primary transition-colors" 
+                    className="tab tab-lg font-semibold w-full hover:text-accent transition-colors" 
                     aria-label="Movies" 
                     defaultChecked 
                 />
                 <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-box p-8 shadow-lg">
-                    <WatchlistMovieCard movies={movieArr} />
+                    {movieArr.length === 0 ? (
+                        <p className="text-center text-lg text-gray-500 py-52">Your saved movies will appear here</p>
+                    ) : (
+                        <WatchlistMovieCard movies={movieArr} onRemove={handleMovieRemove} />
+                    )}
                 </div>
 
                 <input
                     type="radio"
                     name="my_tabs_2"
                     role="tab"
-                    className="tab tab-lg font-semibold hover:text-primary transition-colors"
+                    className="tab tab-lg font-semibold hover:text-accent transition-colors"
                     aria-label="TV Series"
                 />
                 <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-box p-8 shadow-lg">
-                    <WatchlistTVCard Series={tvArr} />
+                    {tvArr.length === 0 ? (
+                        <p className="text-center text-lg text-gray-500 py-52">Your saved TV series will appear here</p>
+                    ) : (
+                        <WatchlistTVCard Series={tvArr} onRemove={handleTVRemove} />
+                    )}
                 </div>
             </div>
         </div>

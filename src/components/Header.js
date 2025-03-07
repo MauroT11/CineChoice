@@ -14,105 +14,81 @@ export default function Header({ userId }) {
     const UserButtonApp = {
         elements: {
             userButtonAvatarBox: "w-12 h-12",
-            userButtonPopoverCard: "bg-base-200/95 backdrop-blur-sm shadow-2xl border border-accent/10 rounded-xl",
-            userButtonPopoverActionButton: "text-accent hover:text-secondary transition-all hover:translate-x-1",
+            userButtonPopoverCard: "bg-white/95 backdrop-blur-sm shadow-2xl border border-gray-200 rounded-xl",
+            userButtonPopoverActionButton: "text-accent hover:text-accent hover:bg-secondary transition-all hover:translate-x-1",
         },
     }
 
     return (
         <div className="sticky top-0 z-50">
-            <div className="navbar bg-primary/95 backdrop-blur-sm px-4 md:px-8 shadow-lg">
-                <div className="navbar-start">
-                    <div className="dropdown lg:hidden">
-                        <label tabIndex={0} className="btn btn-ghost">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <div className="flex items-center justify-between px-4 md:px-8 py-4 bg-primary/90 backdrop-blur-sm shadow-lg">
+                <div className="flex gap-8 items-center">
+                    <div className="relative lg:hidden group">
+                        <button className="p-2 hover:bg-secondary rounded-lg transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" />
                             </svg>
-                        </label>
-                        <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow-lg bg-primary/95 backdrop-blur-sm rounded-box w-52 gap-2">
-                            <li>
-                                <a href="/movies" className="bg-accent/90 hover:bg-secondary rounded-lg transition-all">Popular Movies</a>
-                            </li>
-                            <li>
-                                <a href="/movies/topRated" className="bg-accent/90 hover:bg-secondary rounded-lg transition-all">Top Rated Movies</a>
-                            </li>
-                            <li>
-                                <a href="/tv" className="bg-accent/90 hover:bg-secondary rounded-lg transition-all">Popular TV</a>
-                            </li>
-                            <li>
-                                <a href="/tv/topRated" className="bg-accent/90 hover:bg-secondary rounded-lg transition-all">Top Rated TV</a>
-                            </li>
+                        </button>
+                        {/* Invisible gap filler */}
+                        <div className="absolute h-4 w-full top-full left-0"></div>
+                        <div className="absolute top-[calc(100%+1rem)] left-0 mt-2 w-56 bg-white rounded-lg shadow-xl border border-blue-100 py-2 hidden group-hover:block">
+                            <a href="/movies" className="block px-4 py-2 text-accent hover:bg-secondary hover:text-accent transition-colors">Popular Movies</a>
+                            <a href="/movies/topRated" className="block px-4 py-2 text-accent hover:bg-secondary hover:text-accent transition-colors">Top Rated Movies</a>
+                            <a href="/tv" className="block px-4 py-2 text-accent hover:bg-secondary hover:text-accent transition-colors">Popular TV</a>
+                            <a href="/tv/topRated" className="block px-4 py-2 text-accent hover:bg-secondary hover:text-accent transition-colors">Top Rated TV</a>
                             {userId && (
-                                <li>
-                                    <a href="/watchList" className="bg-accent/90 hover:bg-secondary rounded-lg transition-all">Watch List</a>
-                                </li>
+                                <a href="/watchList" className="block px-4 py-2 text-accent hover:bg-secondary hover:text-accent transition-colors">Watch List</a>
                             )}
-                        </ul>
+                        </div>
                     </div>
-                    <Link href="/" className="btn btn-ghost text-2xl md:text-3xl hover:scale-105 transition-all duration-300 px-2 gap-2">
+                    <Link href="/" className="flex items-center space-x-2 text-2xl md:text-3xl font-bold hover:opacity-90 transition-opacity">
                         <Image
                             src="/cinechoiceFavicon.png"
                             alt="CineChoice Logo"
                             width={48}
                             height={48}
-                            className="hover:rotate-6 transition-transform duration-300"
+                            className="transform hover:rotate-6 transition-transform duration-300"
                             priority
                         />
-                        <span className="text-accent font-bold">CineChoice</span>
+                        <span className="text-accent">CineChoice</span>
                     </Link>
                 </div>
-                <div className="navbar-center hidden lg:flex">
-                    <ul className="menu menu-horizontal text-lg gap-6 px-2">
-                        <li>
-                            <details>
-                                <summary className="bg-accent/90 hover:bg-secondary font-semibold rounded-xl transition-all duration-300 px-6 hover:shadow-lg">
-                                    Movies
-                                </summary>
-                                <ul className="p-3 z-50 bg-primary/95 backdrop-blur-sm rounded-xl shadow-2xl border border-accent/10 mt-2 gap-1">
-                                    <li>
-                                        <a href="/movies" className="bg-accent/90 hover:bg-secondary rounded-lg transition-all hover:translate-x-1">
-                                            Popular
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/movies/topRated" className="bg-accent/90 hover:bg-secondary rounded-lg transition-all hover:translate-x-1">
-                                            Top Rated
-                                        </a>
-                                    </li>
-                                </ul>
-                            </details>
-                        </li>
-                        <li>
-                            <details>
-                                <summary className="bg-accent/90 hover:bg-secondary font-semibold rounded-xl transition-all duration-300 px-6 hover:shadow-lg">
-                                    TV Series
-                                </summary>
-                                <ul className="p-3 z-50 bg-primary/95 backdrop-blur-sm rounded-xl shadow-2xl border border-accent/10 mt-2 gap-1">
-                                    <li>
-                                        <a href="/tv" className="bg-accent/90 hover:bg-secondary rounded-lg transition-all hover:translate-x-1">
-                                            Popular
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/tv/topRated" className="bg-accent/90 hover:bg-secondary rounded-lg transition-all hover:translate-x-1">
-                                            Top Rated
-                                        </a>
-                                    </li>
-                                </ul>
-                            </details>
-                        </li>
-                        {userId ? (
-                            <li>
-                                <a href="/watchList" className="bg-accent/90 hover:bg-secondary font-semibold rounded-xl transition-all duration-300 px-6 hover:shadow-lg">
-                                    Watch List
-                                </a>
-                            </li>
-                        ) : null}
-                    </ul>
+
+                <div className="hidden lg:flex items-center space-x-8">
+                    <div className="relative group">
+                        <button className="px-4 py-2 text-accent font-bold hover:text-accent hover:bg-secondary rounded-lg transition-colors">
+                            Movies
+                        </button>
+                        {/* Invisible gap filler */}
+                        <div className="absolute h-4 w-full top-full left-0"></div>
+                        <div className="absolute hidden group-hover:block w-48 top-[calc(100%+1rem)] left-0 bg-white rounded-lg shadow-xl border border-blue-100 py-2">
+                            <a href="/movies" className="block px-4 py-2 text-accent hover:bg-secondary hover:text-accent transition-colors">Popular</a>
+                            <a href="/movies/topRated" className="block px-4 py-2 text-accent hover:bg-secondary hover:text-accent transition-colors">Top Rated</a>
+                        </div>
+                    </div>
+
+                    <div className="relative group">
+                        <button className="px-4 py-2 text-accent font-bold hover:text-accent hover:bg-secondary rounded-lg transition-colors">
+                            TV Series
+                        </button>
+                        {/* Invisible gap filler */}
+                        <div className="absolute h-4 w-full top-full left-0"></div>
+                        <div className="absolute hidden group-hover:block w-48 top-[calc(100%+1rem)] left-0 bg-white rounded-lg shadow-xl border border-blue-100 py-2">
+                            <a href="/tv" className="block px-4 py-2 text-accent hover:bg-secondary hover:text-accent transition-colors">Popular</a>
+                            <a href="/tv/topRated" className="block px-4 py-2 text-accent hover:bg-secondary hover:text-accent transition-colors">Top Rated</a>
+                        </div>
+                    </div>
+
+                    {userId && (
+                        <a href="/watchList" className="px-4 py-2 text-accent font-bold hover:text-accent rounded-lg hover:bg-secondary transition-colors">
+                            Watch List
+                        </a>
+                    )}
                 </div>
-                <div className="navbar-end">
+
+                <div className="flex items-center">
                     {userId ? (
-                        <div className="px-2 md:px-8">
+                        <div className="px-2 md:px-4">
                             <UserButton
                                 userProfileMode="navigation"
                                 userProfileUrl={"/userProfile"}
@@ -121,11 +97,11 @@ export default function Header({ userId }) {
                             />
                         </div>
                     ) : (
-                        <div className="px-2 md:px-8">
+                        <div className="px-2 md:px-4">
                             <Link 
                                 href={`/signIn`} 
                                 state={userId} 
-                                className="btn btn-accent hover:btn-secondary text-lg md:text-xl transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                                className="px-6 py-2 bg-accent text-white rounded-lg hover:bg-secondary hover:text-accent transition-colors text-lg font-medium shadow-md hover:shadow-lg"
                             >
                                 Sign In
                             </Link>

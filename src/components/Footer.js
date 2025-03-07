@@ -26,42 +26,42 @@ export default function Footer() {
 
     return (
         <div className="mt-auto">
-            <footer className="footer footer-center bg-primary/95 text-accent p-10 backdrop-blur-md shadow-xl border-t border-accent/10">
+            <footer className="footer footer-center bg-primary/90 text-accent p-8 backdrop-blur-sm shadow-lg border-t border-accent/10">
                 <nav className="w-full max-w-5xl mx-auto">
-                    <ul className="flex flex-wrap justify-center font text-base md:text-lg gap-8 md:gap-12 font-medium">
+                    <ul className="flex flex-wrap justify-center font text-base md:text-lg gap-8 md:gap-12 font-bold">
                         <li>
-                            <a href="/legal/terms" className="hover:text-secondary hover:scale-105 transition-all duration-300 ease-in-out">
+                            <a href="/legal/terms" className="hover:text-accent hover:bg-secondary px-4 py-2 rounded-lg transition-colors">
                                 Terms of Use
                             </a>
                         </li>
                         <li>
-                            <a href="/legal/privacy" className="hover:text-secondary hover:scale-105 transition-all duration-300 ease-in-out">
+                            <a href="/legal/privacy" className="hover:text-accent hover:bg-secondary px-4 py-2 rounded-lg transition-colors">
                                 Privacy Policy
                             </a>
                         </li>
                         <li>
-                            <a href="/about" className="hover:text-secondary hover:scale-105 transition-all duration-300 ease-in-out">
+                            <a href="/about" className="hover:text-accent hover:bg-secondary px-4 py-2 rounded-lg transition-colors">
                                 About
                             </a>
                         </li>
                         <li>
-                            <a href="/contact" className="hover:text-secondary hover:scale-105 transition-all duration-300 ease-in-out">
+                            <a href="/contact" className="hover:text-accent hover:bg-secondary px-4 py-2 rounded-lg transition-colors">
                                 Contact
                             </a>
                         </li>
                     </ul>
                 </nav>
-                <div className="flex justify-center gap-6 mt-6">
-                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-secondary transition-colors duration-300">
+                {/* <div className="flex justify-center gap-6 mt-6">
+                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-accent hover:bg-secondary p-2 rounded-lg transition-colors">
                         <AiOutlineLinkedin size={24} />
                     </a>
-                    <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="hover:text-secondary transition-colors duration-300">
+                    <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="hover:text-accent hover:bg-secondary p-2 rounded-lg transition-colors">
                         <FaGithub size={24} />
                     </a>
-                    <a href="mailto:contact@cinechoice.com" className="hover:text-secondary transition-colors duration-300">
+                    <a href="mailto:contact@cinechoice.com" className="hover:text-accent hover:bg-secondary p-2 rounded-lg transition-colors">
                         <MdEmail size={24} />
                     </a>
-                </div>
+                </div> */}
                 <aside className="text-sm text-accent/70 mt-4">
                     <p className="font-light tracking-wide">Copyright © {new Date().getFullYear()} - All rights reserved by CineChoice Ltd</p>
                 </aside>
