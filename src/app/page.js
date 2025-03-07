@@ -7,21 +7,6 @@ import Link from "next/link"
 
 export default function Home() {
 
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 450);
-      setIstablet(window.innerWidth > 933 && window.innerWidth < 1355);
-    };
-
-    handleResize();
-
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
-
   return (
     <div className="min-h-screen bg-gradient-to-b from-base-100 to-neutral/20">
       <div className="container mx-auto px-4 py-8">

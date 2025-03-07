@@ -6,24 +6,7 @@ import MovieCards from "@/components/MovieCards";
 
 export default function Page({params}) {
 
-    const [isTablet, setIstablet] = React.useState(false);
-    const [isMobile, setIsMobile] = React.useState(false);
     const [movies, setMovies] = React.useState({})
-
-    React.useEffect(() => {
-      const handleResize = () => {
-        setIsMobile(window.innerWidth < 932);
-        setIstablet(window.innerWidth > 933 && window.innerWidth < 1355);
-    };
-
-    handleResize();
-
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
 
     const collectionID = params.id
 

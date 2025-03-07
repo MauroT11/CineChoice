@@ -6,25 +6,8 @@ import { Suspense } from "react";
 
 export default function Page() {
 
-    const [isTablet, setIstablet] = React.useState(false);
-    const [isMobile, setIsMobile] = React.useState(false);
     const [movies, setMovies] = React.useState([])
     const [Genres, setGenres] = React.useState([])
-
-    React.useEffect(() => {
-      const handleResize = () => {
-        setIsMobile(window.innerWidth < 500);
-        setIstablet(window.innerWidth > 501 && window.innerWidth < 1355);
-    };
-
-    handleResize();
-
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
 
     const APIkey = process.env.NEXT_PUBLIC_ACCESS_TOKEN;
 
