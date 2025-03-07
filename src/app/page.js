@@ -7,8 +7,6 @@ import Link from "next/link"
 
 export default function Home() {
 
-  const [isTablet, setIstablet] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 450);
@@ -35,7 +33,7 @@ export default function Home() {
             </div>
             <div className="flex flex-col items-center text-center max-w-2xl">
               <p className="py-8 text-lg text-secondary leading-relaxed">
-                CineChoice is an movie recommendation platform designed to make your film & TV serie selection process easier. Whether you're in the mood for action, romance, or suspense, CineChoice provides the popular and top rated Films and TV Series.
+                CineChoice is an movie recommendation platform designed to make your film & TV serie selection process easier. Whether you&apos;re in the mood for action, romance, or suspense, CineChoice provides the popular and top rated Films and TV Series.
                 <br />
                 <span className="block mt-4 text-3xl font-bold text-accent">Lights, camera, CineChoice!</span>
               </p>
