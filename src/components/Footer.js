@@ -26,26 +26,26 @@ export default function Footer() {
 
     return (
         <div className="mt-auto">
-            <footer className="footer footer-center bg-primary/90 text-accent p-8 backdrop-blur-sm shadow-lg border-t border-accent/10">
+            <footer className="flex flex-col items-center bg-primary/90 text-accent p-8 backdrop-blur-sm shadow-lg border-t border-accent/10">
                 <nav className="w-full max-w-5xl mx-auto">
-                    <ul className="flex flex-wrap justify-center font text-base md:text-lg gap-8 md:gap-12 font-bold">
+                    <ul className="flex flex-wrap justify-center text-base md:text-lg gap-8 md:gap-12 font-bold">
                         <li>
-                            <a href="/legal/terms" className="hover:text-accent hover:bg-secondary px-4 py-2 rounded-lg transition-colors">
+                            <a href="/legal/terms" className="hover:bg-secondary hover:text-white px-4 py-2 rounded-lg transition-colors">
                                 Terms of Use
                             </a>
                         </li>
                         <li>
-                            <a href="/legal/privacy" className="hover:text-accent hover:bg-secondary px-4 py-2 rounded-lg transition-colors">
+                            <a href="/legal/privacy" className="hover:text-white hover:bg-secondary px-4 py-2 rounded-lg transition-colors">
                                 Privacy Policy
                             </a>
                         </li>
                         <li>
-                            <a href="/about" className="hover:text-accent hover:bg-secondary px-4 py-2 rounded-lg transition-colors">
+                            <a href="/about" className="hover:text-white hover:bg-secondary px-4 py-2 rounded-lg transition-colors">
                                 About
                             </a>
                         </li>
                         <li>
-                            <a href="/contact" className="hover:text-accent hover:bg-secondary px-4 py-2 rounded-lg transition-colors">
+                            <a href="/contact" className="hover:text-white hover:bg-secondary px-4 py-2 rounded-lg transition-colors">
                                 Contact
                             </a>
                         </li>
