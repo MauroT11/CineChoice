@@ -10,6 +10,7 @@ import { currentUser } from "@clerk/nextjs/server";
 import Link from 'next/link';
 
 async function fetchTV(tvID) {
+    
     const APIkey = process.env.NEXT_PUBLIC_ACCESS_TOKEN;
     const options = {
         method: 'GET',

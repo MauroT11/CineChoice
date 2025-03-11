@@ -26,7 +26,7 @@ export default function Footer() {
 
     return (
         <div className="mt-auto">
-            <footer className="flex flex-col items-center bg-primary/90 text-accent p-8 backdrop-blur-sm shadow-lg border-t border-accent/10">
+            <footer className="flex flex-col items-center bg-primary/90 text-accent gap-8 p-8 backdrop-blur-sm shadow-lg border-t border-accent/10">
                 <nav className="w-full max-w-5xl mx-auto">
                     <ul className="flex flex-wrap justify-center text-base md:text-lg gap-8 md:gap-12 font-bold">
                         <li>

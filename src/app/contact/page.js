@@ -7,7 +7,8 @@ export default function Contact() {
     name: '',
     email: '',
     subject: '',
-    message: ''
+    message: '',
+    project: 'CineChoice',
   });
 
   const [submitStatus, setSubmitStatus] = useState('');
@@ -17,13 +18,31 @@ export default function Contact() {
     e.preventDefault();
     setSubmitStatus('sending');
     
-    // Here you would typically send the form data to your backend
-    // For now, we'll just simulate a submission
-    setTimeout(() => {
+    try {
+      const webhookUrl = process.env.NEXT_PUBLIC_WEBHOOK_URL;
+      if (!webhookUrl) {
+        throw new Error('Webhook URL not configured');
+      }
+
+      const response = await fetch(webhookUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to send message');
+      }
+
       setSubmitStatus('sent');
       setShowModal(true);
-      setFormData({ name: '', email: '', subject: '', message: '' });
-    }, 1000);
+      setFormData({ name: '', email: '', subject: '', message: '', project: 'CineChoice' });
+    } catch (error) {
+      console.error('Error sending message:', error);
+      setSubmitStatus('error');
+    }
   };
 
   const handleChange = (e) => {
